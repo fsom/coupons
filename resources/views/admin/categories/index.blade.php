@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.categories.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.category.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Category', 'route' => 'admin.categories.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -23,6 +27,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.category.fields.id') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.category.fields.region') }}
                     </th>
                     <th>
                         {{ trans('cruds.category.fields.name') }}
@@ -93,6 +100,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'region', name: 'region' },
 { data: 'name', name: 'name' },
 { data: 'title', name: 'title' },
 { data: 'description', name: 'description' },

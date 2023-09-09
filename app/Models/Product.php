@@ -21,6 +21,11 @@ class Product extends Model implements HasMedia
         'images',
     ];
 
+    public const REGION_SELECT = [
+        'en'    => 'en',
+        'de-de' => 'de-de',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -36,6 +41,7 @@ class Product extends Model implements HasMedia
         'gtin',
         'asin',
         'brand_id',
+        'region',
         'created_at',
         'updated_at',
         'deleted_at',

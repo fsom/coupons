@@ -11,6 +11,19 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label>{{ trans('cruds.brand.fields.region') }}</label>
+                <select class="form-control {{ $errors->has('region') ? 'is-invalid' : '' }}" name="region" id="region">
+                    <option value disabled {{ old('region', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Brand::REGION_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('region', $brand->region) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('region'))
+                    <span class="text-danger">{{ $errors->first('region') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.brand.fields.region_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.brand.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $brand->name) }}" required>
                 @if($errors->has('name'))

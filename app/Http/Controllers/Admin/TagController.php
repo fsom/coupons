@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyTagRequest;
 use App\Http\Requests\StoreTagRequest;
@@ -16,7 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class TagController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {
@@ -46,6 +47,9 @@ class TagController extends Controller
 
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
+            });
+            $table->editColumn('region', function ($row) {
+                return $row->region ? Tag::REGION_SELECT[$row->region] : '';
             });
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';

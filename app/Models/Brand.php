@@ -20,6 +20,11 @@ class Brand extends Model implements HasMedia
         'image',
     ];
 
+    public const REGION_SELECT = [
+        'en'    => 'en',
+        'de-de' => 'de-de',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -31,6 +36,7 @@ class Brand extends Model implements HasMedia
         'title',
         'description',
         'content',
+        'region',
         'created_at',
         'updated_at',
         'deleted_at',

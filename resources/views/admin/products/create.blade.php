@@ -96,6 +96,19 @@
                 <span class="help-block">{{ trans('cruds.product.fields.images_helper') }}</span>
             </div>
             <div class="form-group">
+                <label>{{ trans('cruds.product.fields.region') }}</label>
+                <select class="form-control {{ $errors->has('region') ? 'is-invalid' : '' }}" name="region" id="region">
+                    <option value disabled {{ old('region', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Product::REGION_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('region', 'en') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('region'))
+                    <span class="text-danger">{{ $errors->first('region') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.region_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

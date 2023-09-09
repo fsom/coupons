@@ -38,22 +38,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('shops/destroy', 'ShopController@massDestroy')->name('shops.massDestroy');
     Route::post('shops/media', 'ShopController@storeMedia')->name('shops.storeMedia');
     Route::post('shops/ckmedia', 'ShopController@storeCKEditorImages')->name('shops.storeCKEditorImages');
+    Route::post('shops/parse-csv-import', 'ShopController@parseCsvImport')->name('shops.parseCsvImport');
+    Route::post('shops/process-csv-import', 'ShopController@processCsvImport')->name('shops.processCsvImport');
     Route::resource('shops', 'ShopController');
 
     // Category
     Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
     Route::post('categories/media', 'CategoryController@storeMedia')->name('categories.storeMedia');
     Route::post('categories/ckmedia', 'CategoryController@storeCKEditorImages')->name('categories.storeCKEditorImages');
+    Route::post('categories/parse-csv-import', 'CategoryController@parseCsvImport')->name('categories.parseCsvImport');
+    Route::post('categories/process-csv-import', 'CategoryController@processCsvImport')->name('categories.processCsvImport');
     Route::resource('categories', 'CategoryController');
 
     // Tag
     Route::delete('tags/destroy', 'TagController@massDestroy')->name('tags.massDestroy');
     Route::post('tags/media', 'TagController@storeMedia')->name('tags.storeMedia');
     Route::post('tags/ckmedia', 'TagController@storeCKEditorImages')->name('tags.storeCKEditorImages');
+    Route::post('tags/parse-csv-import', 'TagController@parseCsvImport')->name('tags.parseCsvImport');
+    Route::post('tags/process-csv-import', 'TagController@processCsvImport')->name('tags.processCsvImport');
     Route::resource('tags', 'TagController');
 
     // Coupon
     Route::delete('coupons/destroy', 'CouponController@massDestroy')->name('coupons.massDestroy');
+    Route::post('coupons/parse-csv-import', 'CouponController@parseCsvImport')->name('coupons.parseCsvImport');
+    Route::post('coupons/process-csv-import', 'CouponController@processCsvImport')->name('coupons.processCsvImport');
     Route::resource('coupons', 'CouponController');
 
     // Comment
@@ -62,22 +70,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Deal
     Route::delete('deals/destroy', 'DealController@massDestroy')->name('deals.massDestroy');
+    Route::post('deals/parse-csv-import', 'DealController@parseCsvImport')->name('deals.parseCsvImport');
+    Route::post('deals/process-csv-import', 'DealController@processCsvImport')->name('deals.processCsvImport');
     Route::resource('deals', 'DealController');
 
     // Brand
     Route::delete('brands/destroy', 'BrandController@massDestroy')->name('brands.massDestroy');
     Route::post('brands/media', 'BrandController@storeMedia')->name('brands.storeMedia');
     Route::post('brands/ckmedia', 'BrandController@storeCKEditorImages')->name('brands.storeCKEditorImages');
+    Route::post('brands/parse-csv-import', 'BrandController@parseCsvImport')->name('brands.parseCsvImport');
+    Route::post('brands/process-csv-import', 'BrandController@processCsvImport')->name('brands.processCsvImport');
     Route::resource('brands', 'BrandController');
 
     // Product
     Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
+    Route::post('products/parse-csv-import', 'ProductController@parseCsvImport')->name('products.parseCsvImport');
+    Route::post('products/process-csv-import', 'ProductController@processCsvImport')->name('products.processCsvImport');
     Route::resource('products', 'ProductController');
 
     // Offer
     Route::delete('offers/destroy', 'OfferController@massDestroy')->name('offers.massDestroy');
+    Route::post('offers/parse-csv-import', 'OfferController@parseCsvImport')->name('offers.parseCsvImport');
+    Route::post('offers/process-csv-import', 'OfferController@processCsvImport')->name('offers.processCsvImport');
     Route::resource('offers', 'OfferController');
 
     // View

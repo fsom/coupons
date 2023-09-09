@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('ean')->nullable();
             $table->string('gtin')->nullable();
             $table->string('asin')->nullable();
+            $table->string('region')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

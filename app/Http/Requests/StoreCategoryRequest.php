@@ -17,6 +17,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
+            'region' => [
+                'required',
+            ],
             'name' => [
                 'string',
                 'required',

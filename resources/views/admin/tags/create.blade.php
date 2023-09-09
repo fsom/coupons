@@ -10,6 +10,19 @@
         <form method="POST" action="{{ route("admin.tags.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label class="required">{{ trans('cruds.tag.fields.region') }}</label>
+                <select class="form-control {{ $errors->has('region') ? 'is-invalid' : '' }}" name="region" id="region" required>
+                    <option value disabled {{ old('region', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Tag::REGION_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('region', 'en') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('region'))
+                    <span class="text-danger">{{ $errors->first('region') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.tag.fields.region_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.tag.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))

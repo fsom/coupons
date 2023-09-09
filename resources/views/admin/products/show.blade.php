@@ -111,6 +111,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.region') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Product::REGION_SELECT[$product->region] ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

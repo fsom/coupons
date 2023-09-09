@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.products.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.product.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Product', 'route' => 'admin.products.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -50,6 +54,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.product.fields.images') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.product.fields.region') }}
                     </th>
                     <th>
                         &nbsp;
@@ -117,6 +124,7 @@
 { data: 'asin', name: 'asin' },
 { data: 'brand_name', name: 'brand.name' },
 { data: 'images', name: 'images', sortable: false, searchable: false },
+{ data: 'region', name: 'region' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
