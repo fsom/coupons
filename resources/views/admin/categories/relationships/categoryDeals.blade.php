@@ -63,7 +63,7 @@
                                     {{ $deal->id ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $deal->shop->domain ?? '' }}
+                                    {{ $deal->shop->url ?? '' }}
                                 </td>
                                 <td>
                                     {{ $deal->title ?? '' }}

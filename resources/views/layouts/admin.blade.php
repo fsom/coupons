@@ -148,7 +148,11 @@
   let selectNoneButtonTrans = '{{ trans('global.deselect_all') }}'
 
   let languages = {
-    'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json'
+    'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json',
+        'de': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/German.json',
+        'fr': 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json',
+        'es': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json',
+        'it': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Italian.json'
   };
 
   $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn' })

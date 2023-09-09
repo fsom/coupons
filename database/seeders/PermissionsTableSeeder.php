@@ -284,6 +284,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 69,
+                'title' => 'view_create',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'view_edit',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'view_show',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'view_delete',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'view_access',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'click_create',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'click_edit',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'click_show',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'click_delete',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'click_access',
+            ],
+            [
+                'id'    => 79,
                 'title' => 'profile_password_edit',
             ],
         ];

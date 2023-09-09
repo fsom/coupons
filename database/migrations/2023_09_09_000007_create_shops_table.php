@@ -11,9 +11,12 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('region');
-            $table->string('domain')->unique();
+            $table->string('name')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('url');
             $table->string('titel')->nullable();
             $table->string('description')->nullable();
+            $table->longText('content')->nullable();
             $table->string('offerspage')->nullable();
             $table->string('contactpage')->nullable();
             $table->string('imprint')->nullable();
@@ -34,6 +37,8 @@ class CreateShopsTable extends Migration
             $table->string('header_redirect')->nullable();
             $table->string('ip')->nullable();
             $table->boolean('https')->default(0)->nullable();
+            $table->integer('svol')->nullable();
+            $table->string('keywords')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

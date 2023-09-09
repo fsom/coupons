@@ -105,7 +105,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'shop_domain', name: 'shop.domain' },
+{ data: 'shop_url', name: 'shop.url' },
 { data: 'title', name: 'title' },
 { data: 'description', name: 'description' },
 { data: 'value', name: 'value' },

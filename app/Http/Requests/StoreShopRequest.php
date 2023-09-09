@@ -20,10 +20,17 @@ class StoreShopRequest extends FormRequest
             'region' => [
                 'required',
             ],
+            'name' => [
+                'string',
+                'nullable',
+            ],
             'domain' => [
                 'string',
+                'nullable',
+            ],
+            'url' => [
+                'string',
                 'required',
-                'unique:shops',
             ],
             'titel' => [
                 'string',
@@ -94,6 +101,16 @@ class StoreShopRequest extends FormRequest
                 'nullable',
             ],
             'ip' => [
+                'string',
+                'nullable',
+            ],
+            'svol' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'keywords' => [
                 'string',
                 'nullable',
             ],

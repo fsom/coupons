@@ -81,8 +81,8 @@
                     </li>
                 @endcan
                 @can('setting_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/tags*") ? "menu-open" : "" }} {{ request()->is("admin/brands*") ? "menu-open" : "" }} {{ request()->is("admin/products*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/categories*") ? "active" : "" }} {{ request()->is("admin/tags*") ? "active" : "" }} {{ request()->is("admin/brands*") ? "active" : "" }} {{ request()->is("admin/products*") ? "active" : "" }}" href="#">
+                    <li class="nav-item has-treeview {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/tags*") ? "menu-open" : "" }} {{ request()->is("admin/brands*") ? "menu-open" : "" }} {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/views*") ? "menu-open" : "" }} {{ request()->is("admin/clicks*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/categories*") ? "active" : "" }} {{ request()->is("admin/tags*") ? "active" : "" }} {{ request()->is("admin/brands*") ? "active" : "" }} {{ request()->is("admin/products*") ? "active" : "" }} {{ request()->is("admin/views*") ? "active" : "" }} {{ request()->is("admin/clicks*") ? "active" : "" }}" href="#">
                             <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
@@ -136,6 +136,30 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.product.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('view_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.views.index") }}" class="nav-link {{ request()->is("admin/views") || request()->is("admin/views/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-eye">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.view.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('click_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.clicks.index") }}" class="nav-link {{ request()->is("admin/clicks") || request()->is("admin/clicks/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-mouse-pointer">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.click.title') }}
                                         </p>
                                     </a>
                                 </li>

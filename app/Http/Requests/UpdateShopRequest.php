@@ -20,10 +20,17 @@ class UpdateShopRequest extends FormRequest
             'region' => [
                 'required',
             ],
+            'name' => [
+                'string',
+                'nullable',
+            ],
             'domain' => [
                 'string',
+                'nullable',
+            ],
+            'url' => [
+                'string',
                 'required',
-                'unique:shops,domain,' . request()->route('shop')->id,
             ],
             'titel' => [
                 'string',
@@ -94,6 +101,16 @@ class UpdateShopRequest extends FormRequest
                 'nullable',
             ],
             'ip' => [
+                'string',
+                'nullable',
+            ],
+            'svol' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'keywords' => [
                 'string',
                 'nullable',
             ],
