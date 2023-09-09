@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.tags.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.tag.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Tag', 'route' => 'admin.tags.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -23,6 +27,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.tag.fields.id') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.tag.fields.region') }}
                     </th>
                     <th>
                         {{ trans('cruds.tag.fields.name') }}
@@ -93,6 +100,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'region', name: 'region' },
 { data: 'name', name: 'name' },
 { data: 'title', name: 'title' },
 { data: 'description', name: 'description' },

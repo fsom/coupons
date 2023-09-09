@@ -52,6 +52,9 @@
                                 {{ trans('cruds.product.fields.images') }}
                             </th>
                             <th>
+                                {{ trans('cruds.product.fields.region') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -99,6 +102,9 @@
                                             <img src="{{ $media->getUrl('thumb') }}">
                                         </a>
                                     @endforeach
+                                </td>
+                                <td>
+                                    {{ App\Models\Product::REGION_SELECT[$product->region] ?? '' }}
                                 </td>
                                 <td>
                                     @can('product_show')

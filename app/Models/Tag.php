@@ -20,6 +20,11 @@ class Tag extends Model implements HasMedia
         'image',
     ];
 
+    public const REGION_SELECT = [
+        'en'    => 'en',
+        'de-de' => 'de-de',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -27,6 +32,7 @@ class Tag extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'region',
         'name',
         'title',
         'description',

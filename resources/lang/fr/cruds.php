@@ -211,6 +211,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'region'             => 'Region',
+            'region_helper'      => ' ',
         ],
     ],
     'tag' => [
@@ -233,6 +235,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'region'             => 'Region',
+            'region_helper'      => ' ',
         ],
     ],
     'coupon' => [
@@ -365,6 +369,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'region'             => 'Region',
+            'region_helper'      => ' ',
         ],
     ],
     'product' => [
@@ -399,6 +405,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'region'             => 'Region',
+            'region_helper'      => ' ',
         ],
     ],
     'setting' => [

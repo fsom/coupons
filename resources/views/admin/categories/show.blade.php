@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.category.fields.region') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Category::REGION_SELECT[$category->region] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.category.fields.name') }}
                         </th>
                         <td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
@@ -17,7 +18,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {
@@ -91,6 +92,9 @@ class ProductController extends Controller
                 }
 
                 return implode(' ', $links);
+            });
+            $table->editColumn('region', function ($row) {
+                return $row->region ? Product::REGION_SELECT[$row->region] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'image', 'brand', 'images']);

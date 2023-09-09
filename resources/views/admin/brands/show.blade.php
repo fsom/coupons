@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.brand.fields.region') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Brand::REGION_SELECT[$brand->region] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.brand.fields.name') }}
                         </th>
                         <td>

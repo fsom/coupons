@@ -10,6 +10,19 @@
         <form method="POST" action="{{ route("admin.categories.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label class="required">{{ trans('cruds.category.fields.region') }}</label>
+                <select class="form-control {{ $errors->has('region') ? 'is-invalid' : '' }}" name="region" id="region" required>
+                    <option value disabled {{ old('region', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Category::REGION_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('region', 'en') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('region'))
+                    <span class="text-danger">{{ $errors->first('region') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.category.fields.region_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.category.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))

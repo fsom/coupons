@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.tag.fields.region') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Tag::REGION_SELECT[$tag->region] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.tag.fields.name') }}
                         </th>
                         <td>

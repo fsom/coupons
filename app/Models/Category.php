@@ -27,12 +27,23 @@ class Category extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'region',
         'name',
         'title',
         'description',
         'created_at',
         'updated_at',
         'deleted_at',
+    ];
+
+    public const REGION_SELECT = [
+        'en'    => 'en',
+        'de-de' => 'de-de',
+        'de-at' => 'de-at',
+        'de-ch' => 'de-ch',
+        'fr-fr' => 'fr-fr',
+        'es-es' => 'es-es',
+        'it-it' => 'it-it',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

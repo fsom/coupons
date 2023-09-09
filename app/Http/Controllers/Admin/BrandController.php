@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyBrandRequest;
 use App\Http\Requests\StoreBrandRequest;
@@ -16,7 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class BrandController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {
@@ -66,6 +67,9 @@ class BrandController extends Controller
                 }
 
                 return '';
+            });
+            $table->editColumn('region', function ($row) {
+                return $row->region ? Brand::REGION_SELECT[$row->region] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'image']);

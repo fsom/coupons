@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyShopRequest;
 use App\Http\Requests\StoreShopRequest;
@@ -16,7 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ShopController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {

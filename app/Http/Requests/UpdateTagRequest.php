@@ -17,6 +17,9 @@ class UpdateTagRequest extends FormRequest
     public function rules()
     {
         return [
+            'region' => [
+                'required',
+            ],
             'name' => [
                 'string',
                 'required',
