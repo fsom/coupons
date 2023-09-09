@@ -23,12 +23,28 @@
                 <span class="help-block">{{ trans('cruds.shop.fields.region_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="domain">{{ trans('cruds.shop.fields.domain') }}</label>
-                <input class="form-control {{ $errors->has('domain') ? 'is-invalid' : '' }}" type="text" name="domain" id="domain" value="{{ old('domain', '') }}" required>
+                <label for="name">{{ trans('cruds.shop.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
+                @if($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.name_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="domain">{{ trans('cruds.shop.fields.domain') }}</label>
+                <input class="form-control {{ $errors->has('domain') ? 'is-invalid' : '' }}" type="text" name="domain" id="domain" value="{{ old('domain', '') }}">
                 @if($errors->has('domain'))
                     <span class="text-danger">{{ $errors->first('domain') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.domain_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="url">{{ trans('cruds.shop.fields.url') }}</label>
+                <input class="form-control {{ $errors->has('url') ? 'is-invalid' : '' }}" type="text" name="url" id="url" value="{{ old('url', '') }}" required>
+                @if($errors->has('url'))
+                    <span class="text-danger">{{ $errors->first('url') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.url_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="titel">{{ trans('cruds.shop.fields.titel') }}</label>
@@ -45,6 +61,14 @@
                     <span class="text-danger">{{ $errors->first('description') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.description_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="content">{{ trans('cruds.shop.fields.content') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content') !!}</textarea>
+                @if($errors->has('content'))
+                    <span class="text-danger">{{ $errors->first('content') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.content_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="offerspage">{{ trans('cruds.shop.fields.offerspage') }}</label>
@@ -231,6 +255,22 @@
                 <span class="help-block">{{ trans('cruds.shop.fields.https_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="svol">{{ trans('cruds.shop.fields.svol') }}</label>
+                <input class="form-control {{ $errors->has('svol') ? 'is-invalid' : '' }}" type="number" name="svol" id="svol" value="{{ old('svol', '') }}" step="1">
+                @if($errors->has('svol'))
+                    <span class="text-danger">{{ $errors->first('svol') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.svol_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="keywords">{{ trans('cruds.shop.fields.keywords') }}</label>
+                <input class="form-control {{ $errors->has('keywords') ? 'is-invalid' : '' }}" type="text" name="keywords" id="keywords" value="{{ old('keywords', '') }}">
+                @if($errors->has('keywords'))
+                    <span class="text-danger">{{ $errors->first('keywords') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.keywords_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -244,6 +284,70 @@
 @endsection
 
 @section('scripts')
+<script>
+    $(document).ready(function () {
+  function SimpleUploadAdapter(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+      return {
+        upload: function() {
+          return loader.file
+            .then(function (file) {
+              return new Promise(function(resolve, reject) {
+                // Init request
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '{{ route('admin.shops.storeCKEditorImages') }}', true);
+                xhr.setRequestHeader('x-csrf-token', window._token);
+                xhr.setRequestHeader('Accept', 'application/json');
+                xhr.responseType = 'json';
+
+                // Init listeners
+                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                xhr.addEventListener('error', function() { reject(genericErrorText) });
+                xhr.addEventListener('abort', function() { reject() });
+                xhr.addEventListener('load', function() {
+                  var response = xhr.response;
+
+                  if (!response || xhr.status !== 201) {
+                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
+                  }
+
+                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+
+                  resolve({ default: response.url });
+                });
+
+                if (xhr.upload) {
+                  xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                      loader.uploadTotal = e.total;
+                      loader.uploaded = e.loaded;
+                    }
+                  });
+                }
+
+                // Send request
+                var data = new FormData();
+                data.append('upload', file);
+                data.append('crud_id', '{{ $shop->id ?? 0 }}');
+                xhr.send(data);
+              });
+            })
+        }
+      };
+    }
+  }
+
+  var allEditors = document.querySelectorAll('.ckeditor');
+  for (var i = 0; i < allEditors.length; ++i) {
+    ClassicEditor.create(
+      allEditors[i], {
+        extraPlugins: [SimpleUploadAdapter]
+      }
+    );
+  }
+});
+</script>
+
 <script>
     Dropzone.options.screenshotDropzone = {
     url: '{{ route('admin.shops.storeMedia') }}',

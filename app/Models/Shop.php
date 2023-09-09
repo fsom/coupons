@@ -40,9 +40,12 @@ class Shop extends Model implements HasMedia
 
     protected $fillable = [
         'region',
+        'name',
         'domain',
+        'url',
         'titel',
         'description',
+        'content',
         'offerspage',
         'contactpage',
         'imprint',
@@ -64,6 +67,8 @@ class Shop extends Model implements HasMedia
         'header_redirect',
         'ip',
         'https',
+        'svol',
+        'keywords',
         'updated_at',
         'deleted_at',
         'created_by_id',

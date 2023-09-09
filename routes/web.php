@@ -80,6 +80,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('offers/destroy', 'OfferController@massDestroy')->name('offers.massDestroy');
     Route::resource('offers', 'OfferController');
 
+    // View
+    Route::delete('views/destroy', 'ViewController@massDestroy')->name('views.massDestroy');
+    Route::resource('views', 'ViewController');
+
+    // Click
+    Route::delete('clicks/destroy', 'ClickController@massDestroy')->name('clicks.massDestroy');
+    Route::resource('clicks', 'ClickController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

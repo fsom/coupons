@@ -33,10 +33,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.shop.fields.name') }}
+                        </th>
+                        <td>
+                            {{ $shop->name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.shop.fields.domain') }}
                         </th>
                         <td>
                             {{ $shop->domain }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.url') }}
+                        </th>
+                        <td>
+                            {{ $shop->url }}
                         </td>
                     </tr>
                     <tr>
@@ -53,6 +69,14 @@
                         </th>
                         <td>
                             {{ $shop->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.content') }}
+                        </th>
+                        <td>
+                            {!! $shop->content !!}
                         </td>
                     </tr>
                     <tr>
@@ -237,6 +261,22 @@
                         </th>
                         <td>
                             <input type="checkbox" disabled="disabled" {{ $shop->https ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.svol') }}
+                        </th>
+                        <td>
+                            {{ $shop->svol }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.keywords') }}
+                        </th>
+                        <td>
+                            {{ $shop->keywords }}
                         </td>
                     </tr>
                 </tbody>

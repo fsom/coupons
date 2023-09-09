@@ -60,7 +60,7 @@
                                     {{ $coupon->id ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $coupon->shop->domain ?? '' }}
+                                    {{ $coupon->shop->url ?? '' }}
                                 </td>
                                 <td>
                                     {{ $coupon->title ?? '' }}

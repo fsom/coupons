@@ -28,7 +28,7 @@
                             {{ trans('cruds.deal.fields.shop') }}
                         </th>
                         <td>
-                            {{ $deal->shop->domain ?? '' }}
+                            {{ $deal->shop->url ?? '' }}
                         </td>
                     </tr>
                     <tr>

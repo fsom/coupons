@@ -48,8 +48,8 @@ class DealController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->addColumn('shop_domain', function ($row) {
-                return $row->shop ? $row->shop->domain : '';
+            $table->addColumn('shop_url', function ($row) {
+                return $row->shop ? $row->shop->url : '';
             });
 
             $table->editColumn('title', function ($row) {
@@ -85,7 +85,7 @@ class DealController extends Controller
     {
         abort_if(Gate::denies('deal_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $shops = Shop::pluck('domain', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -110,7 +110,7 @@ class DealController extends Controller
     {
         abort_if(Gate::denies('deal_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $shops = Shop::pluck('domain', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

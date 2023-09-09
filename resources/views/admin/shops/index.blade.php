@@ -28,13 +28,10 @@
                         {{ trans('cruds.shop.fields.region') }}
                     </th>
                     <th>
+                        {{ trans('cruds.shop.fields.name') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.shop.fields.domain') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.shop.fields.titel') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.shop.fields.offerspage') }}
                     </th>
                     <th>
                         {{ trans('cruds.shop.fields.active') }}
@@ -97,9 +94,8 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'region', name: 'region' },
+{ data: 'name', name: 'name' },
 { data: 'domain', name: 'domain' },
-{ data: 'titel', name: 'titel' },
-{ data: 'offerspage', name: 'offerspage' },
 { data: 'active', name: 'active' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
