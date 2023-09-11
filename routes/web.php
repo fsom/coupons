@@ -42,22 +42,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('shops/process-csv-import', 'ShopController@processCsvImport')->name('shops.processCsvImport');
     Route::resource('shops', 'ShopController');
 
-    // Category
-    Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
-    Route::post('categories/media', 'CategoryController@storeMedia')->name('categories.storeMedia');
-    Route::post('categories/ckmedia', 'CategoryController@storeCKEditorImages')->name('categories.storeCKEditorImages');
-    Route::post('categories/parse-csv-import', 'CategoryController@parseCsvImport')->name('categories.parseCsvImport');
-    Route::post('categories/process-csv-import', 'CategoryController@processCsvImport')->name('categories.processCsvImport');
-    Route::resource('categories', 'CategoryController');
-
-    // Tag
-    Route::delete('tags/destroy', 'TagController@massDestroy')->name('tags.massDestroy');
-    Route::post('tags/media', 'TagController@storeMedia')->name('tags.storeMedia');
-    Route::post('tags/ckmedia', 'TagController@storeCKEditorImages')->name('tags.storeCKEditorImages');
-    Route::post('tags/parse-csv-import', 'TagController@parseCsvImport')->name('tags.parseCsvImport');
-    Route::post('tags/process-csv-import', 'TagController@processCsvImport')->name('tags.processCsvImport');
-    Route::resource('tags', 'TagController');
-
     // Coupon
     Route::delete('coupons/destroy', 'CouponController@massDestroy')->name('coupons.massDestroy');
     Route::post('coupons/parse-csv-import', 'CouponController@parseCsvImport')->name('coupons.parseCsvImport');
@@ -82,14 +66,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('brands/process-csv-import', 'BrandController@processCsvImport')->name('brands.processCsvImport');
     Route::resource('brands', 'BrandController');
 
-    // Product
-    Route::delete('products/destroy', 'ProductController@massDestroy')->name('products.massDestroy');
-    Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
-    Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
-    Route::post('products/parse-csv-import', 'ProductController@parseCsvImport')->name('products.parseCsvImport');
-    Route::post('products/process-csv-import', 'ProductController@processCsvImport')->name('products.processCsvImport');
-    Route::resource('products', 'ProductController');
-
     // Offer
     Route::delete('offers/destroy', 'OfferController@massDestroy')->name('offers.massDestroy');
     Route::post('offers/parse-csv-import', 'OfferController@parseCsvImport')->name('offers.parseCsvImport');
@@ -104,7 +80,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('clicks/destroy', 'ClickController@massDestroy')->name('clicks.massDestroy');
     Route::resource('clicks', 'ClickController');
 
+    // Team
+    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::resource('teams', 'TeamController');
+
+    // Ad
+    Route::delete('ads/destroy', 'AdController@massDestroy')->name('ads.massDestroy');
+    Route::post('ads/parse-csv-import', 'AdController@parseCsvImport')->name('ads.parseCsvImport');
+    Route::post('ads/process-csv-import', 'AdController@processCsvImport')->name('ads.processCsvImport');
+    Route::resource('ads', 'AdController');
+
+    // Banner
+    Route::delete('banners/destroy', 'BannerController@massDestroy')->name('banners.massDestroy');
+    Route::resource('banners', 'BannerController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+    Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
+    Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

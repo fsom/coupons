@@ -81,24 +81,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.coupon.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $coupon->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.coupon.fields.tags') }}
-                        </th>
-                        <td>
-                            @foreach($coupon->tags as $key => $tags)
-                                <span class="label label-info">{{ $tags->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.coupon.fields.description') }}
                         </th>
                         <td>

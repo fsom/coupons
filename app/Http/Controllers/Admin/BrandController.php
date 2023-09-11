@@ -24,7 +24,7 @@ class BrandController extends Controller
         abort_if(Gate::denies('brand_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Brand::query()->select(sprintf('%s.*', (new Brand)->table));
+            $query = Brand::with(['team'])->select(sprintf('%s.*', (new Brand)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -48,6 +48,9 @@ class BrandController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('region', function ($row) {
+                return $row->region ? Brand::REGION_SELECT[$row->region] : '';
+            });
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
@@ -67,9 +70,6 @@ class BrandController extends Controller
                 }
 
                 return '';
-            });
-            $table->editColumn('region', function ($row) {
-                return $row->region ? Brand::REGION_SELECT[$row->region] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'image']);
@@ -106,6 +106,8 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $brand->load('team');
+
         return view('admin.brands.edit', compact('brand'));
     }
 
@@ -131,7 +133,7 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $brand->load('brandProducts', 'brandDeals', 'brandOffers');
+        $brand->load('team');
 
         return view('admin.brands.show', compact('brand'));
     }

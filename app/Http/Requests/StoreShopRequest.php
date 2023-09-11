@@ -68,30 +68,6 @@ class StoreShopRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'facebook' => [
-                'string',
-                'nullable',
-            ],
-            'twitter' => [
-                'string',
-                'nullable',
-            ],
-            'instagram' => [
-                'string',
-                'nullable',
-            ],
-            'linkedin' => [
-                'string',
-                'nullable',
-            ],
-            'youtube' => [
-                'string',
-                'nullable',
-            ],
-            'tiktok' => [
-                'string',
-                'nullable',
-            ],
             'email' => [
                 'string',
                 'nullable',

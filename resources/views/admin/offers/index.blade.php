@@ -47,12 +47,6 @@
                         {{ trans('cruds.offer.fields.landingpage') }}
                     </th>
                     <th>
-                        {{ trans('cruds.offer.fields.brand') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.offer.fields.product') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -115,8 +109,6 @@
 { data: 'value', name: 'value' },
 { data: 'until', name: 'until' },
 { data: 'landingpage', name: 'landingpage' },
-{ data: 'brand_name', name: 'brand.name' },
-{ data: 'product_name', name: 'product.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

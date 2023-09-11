@@ -9,8 +9,8 @@ class AddRelationshipFieldsToShopsTable extends Migration
     public function up()
     {
         Schema::table('shops', function (Blueprint $table) {
-            $table->unsignedBigInteger('created_by_id')->nullable();
-            $table->foreign('created_by_id', 'created_by_fk_8979285')->references('id')->on('users');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id', 'team_fk_8987939')->references('id')->on('teams');
         });
     }
 }

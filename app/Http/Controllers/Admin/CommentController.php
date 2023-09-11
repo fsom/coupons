@@ -20,7 +20,7 @@ class CommentController extends Controller
         abort_if(Gate::denies('comment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Comment::with(['shop', 'created_by'])->select(sprintf('%s.*', (new Comment)->table));
+            $query = Comment::with(['shop', 'team'])->select(sprintf('%s.*', (new Comment)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -85,7 +85,7 @@ class CommentController extends Controller
 
         $shops = Shop::pluck('domain', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $comment->load('shop', 'created_by');
+        $comment->load('shop', 'team');
 
         return view('admin.comments.edit', compact('comment', 'shops'));
     }
@@ -101,7 +101,7 @@ class CommentController extends Controller
     {
         abort_if(Gate::denies('comment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $comment->load('shop', 'created_by');
+        $comment->load('shop', 'team');
 
         return view('admin.comments.show', compact('comment'));
     }

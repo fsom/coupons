@@ -11,8 +11,8 @@ class AddRelationshipFieldsToCommentsTable extends Migration
         Schema::table('comments', function (Blueprint $table) {
             $table->unsignedBigInteger('shop_id')->nullable();
             $table->foreign('shop_id', 'shop_fk_8979326')->references('id')->on('shops');
-            $table->unsignedBigInteger('created_by_id')->nullable();
-            $table->foreign('created_by_id', 'created_by_fk_8979338')->references('id')->on('users');
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id', 'team_fk_8987940')->references('id')->on('teams');
         });
     }
 }

@@ -33,14 +33,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.shop.fields.name') }}
-                        </th>
-                        <td>
-                            {{ $shop->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.shop.fields.domain') }}
                         </th>
                         <td>
@@ -53,6 +45,14 @@
                         </th>
                         <td>
                             {{ $shop->url }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.name') }}
+                        </th>
+                        <td>
+                            {{ $shop->name }}
                         </td>
                     </tr>
                     <tr>
@@ -77,6 +77,30 @@
                         </th>
                         <td>
                             {!! $shop->content !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.what') }}
+                        </th>
+                        <td>
+                            {!! $shop->what !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.save') }}
+                        </th>
+                        <td>
+                            {!! $shop->save !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.about') }}
+                        </th>
+                        <td>
+                            {!! $shop->about !!}
                         </td>
                     </tr>
                     <tr>
@@ -161,54 +185,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.shop.fields.facebook') }}
-                        </th>
-                        <td>
-                            {{ $shop->facebook }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.twitter') }}
-                        </th>
-                        <td>
-                            {{ $shop->twitter }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.instagram') }}
-                        </th>
-                        <td>
-                            {{ $shop->instagram }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.linkedin') }}
-                        </th>
-                        <td>
-                            {{ $shop->linkedin }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.youtube') }}
-                        </th>
-                        <td>
-                            {{ $shop->youtube }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.tiktok') }}
-                        </th>
-                        <td>
-                            {{ $shop->tiktok }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.shop.fields.active') }}
                         </th>
                         <td>
@@ -277,6 +253,14 @@
                         </th>
                         <td>
                             {{ $shop->keywords }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.catgories') }}
+                        </th>
+                        <td>
+                            {{ $shop->catgories }}
                         </td>
                     </tr>
                 </tbody>

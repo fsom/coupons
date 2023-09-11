@@ -44,7 +44,7 @@ class Comment extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-        'created_by_id',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -67,8 +67,8 @@ class Comment extends Model
         $this->attributes['answer_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
-    public function created_by()
+    public function team()
     {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

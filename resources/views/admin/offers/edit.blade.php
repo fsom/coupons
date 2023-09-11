@@ -71,58 +71,6 @@
                 <span class="help-block">{{ trans('cruds.offer.fields.rules_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="brand_id">{{ trans('cruds.offer.fields.brand') }}</label>
-                <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
-                    @foreach($brands as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $offer->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('brand'))
-                    <span class="text-danger">{{ $errors->first('brand') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.offer.fields.brand_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="product_id">{{ trans('cruds.offer.fields.product') }}</label>
-                <select class="form-control select2 {{ $errors->has('product') ? 'is-invalid' : '' }}" name="product_id" id="product_id">
-                    @foreach($products as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('product_id') ? old('product_id') : $offer->product->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('product'))
-                    <span class="text-danger">{{ $errors->first('product') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.offer.fields.product_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="category_id">{{ trans('cruds.offer.fields.category') }}</label>
-                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
-                    @foreach($categories as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('category_id') ? old('category_id') : $offer->category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('category'))
-                    <span class="text-danger">{{ $errors->first('category') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.offer.fields.category_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="tags">{{ trans('cruds.offer.fields.tags') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
-                    @foreach($tags as $id => $tag)
-                        <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $offer->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('tags'))
-                    <span class="text-danger">{{ $errors->first('tags') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.offer.fields.tags_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

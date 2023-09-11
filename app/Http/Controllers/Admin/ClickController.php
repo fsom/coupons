@@ -19,7 +19,7 @@ class ClickController extends Controller
         abort_if(Gate::denies('click_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Click::query()->select(sprintf('%s.*', (new Click)->table));
+            $query = Click::with(['team'])->select(sprintf('%s.*', (new Click)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -85,6 +85,8 @@ class ClickController extends Controller
     {
         abort_if(Gate::denies('click_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $click->load('team');
+
         return view('admin.clicks.edit', compact('click'));
     }
 
@@ -98,6 +100,8 @@ class ClickController extends Controller
     public function show(Click $click)
     {
         abort_if(Gate::denies('click_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $click->load('team');
 
         return view('admin.clicks.show', compact('click'));
     }

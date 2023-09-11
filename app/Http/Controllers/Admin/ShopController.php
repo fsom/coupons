@@ -24,7 +24,7 @@ class ShopController extends Controller
         abort_if(Gate::denies('shop_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Shop::with(['created_by'])->select(sprintf('%s.*', (new Shop)->table));
+            $query = Shop::with(['team'])->select(sprintf('%s.*', (new Shop)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -99,7 +99,7 @@ class ShopController extends Controller
     {
         abort_if(Gate::denies('shop_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $shop->load('created_by');
+        $shop->load('team');
 
         return view('admin.shops.edit', compact('shop'));
     }
@@ -137,7 +137,7 @@ class ShopController extends Controller
     {
         abort_if(Gate::denies('shop_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $shop->load('created_by', 'shopCoupons', 'shopComments', 'shopDeals', 'shopOffers');
+        $shop->load('team', 'shopCoupons', 'shopComments', 'shopDeals', 'shopOffers');
 
         return view('admin.shops.show', compact('shop'));
     }

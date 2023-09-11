@@ -43,12 +43,6 @@
                                 {{ trans('cruds.deal.fields.landingpage') }}
                             </th>
                             <th>
-                                {{ trans('cruds.deal.fields.brand') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.deal.fields.product') }}
-                            </th>
-                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -79,12 +73,6 @@
                                 </td>
                                 <td>
                                     {{ $deal->landingpage ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $deal->brand->name ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $deal->product->name ?? '' }}
                                 </td>
                                 <td>
                                     @can('deal_show')

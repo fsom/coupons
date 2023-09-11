@@ -15,14 +15,14 @@ trait MultiTenantModelTrait
                 // Prevent admin from setting his own id - admin entries are global.
                 // If required, remove the surrounding IF condition and admins will act as users
                 if (! $isAdmin) {
-                    $model->created_by_id = auth()->id();
+                    $model->team_id = auth()->user()->team_id;
                 }
             });
             if (! $isAdmin) {
-                static::addGlobalScope('created_by_id', function (Builder $builder) {
-                    $field = sprintf('%s.%s', $builder->getQuery()->from, 'created_by_id');
+                static::addGlobalScope('team_id', function (Builder $builder) {
+                    $field = sprintf('%s.%s', $builder->getQuery()->from, 'team_id');
 
-                    $builder->where($field, auth()->id())->orWhereNull($field);
+                    $builder->where($field, auth()->user()->team_id)->orWhereNull($field);
                 });
             }
         }

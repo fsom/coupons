@@ -43,12 +43,6 @@
                                 {{ trans('cruds.offer.fields.landingpage') }}
                             </th>
                             <th>
-                                {{ trans('cruds.offer.fields.brand') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.offer.fields.product') }}
-                            </th>
-                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -79,12 +73,6 @@
                                 </td>
                                 <td>
                                     {{ $offer->landingpage ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $offer->brand->name ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $offer->product->name ?? '' }}
                                 </td>
                                 <td>
                                     @can('offer_show')

@@ -4,16 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class CreateTeamsTable extends Migration
 {
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('region');
-            $table->string('name')->unique();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -7,10 +7,8 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyCouponRequest;
 use App\Http\Requests\StoreCouponRequest;
 use App\Http\Requests\UpdateCouponRequest;
-use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Shop;
-use App\Models\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +23,7 @@ class CouponController extends Controller
         abort_if(Gate::denies('coupon_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Coupon::with(['shop', 'category', 'tags', 'created_by'])->select(sprintf('%s.*', (new Coupon)->table));
+            $query = Coupon::with(['shop', 'team'])->select(sprintf('%s.*', (new Coupon)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -84,17 +82,12 @@ class CouponController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $tags = Tag::pluck('name', 'id');
-
-        return view('admin.coupons.create', compact('categories', 'shops', 'tags'));
+        return view('admin.coupons.create', compact('shops'));
     }
 
     public function store(StoreCouponRequest $request)
     {
         $coupon = Coupon::create($request->all());
-        $coupon->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.coupons.index');
     }
@@ -105,19 +98,14 @@ class CouponController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $coupon->load('shop', 'team');
 
-        $tags = Tag::pluck('name', 'id');
-
-        $coupon->load('shop', 'category', 'tags', 'created_by');
-
-        return view('admin.coupons.edit', compact('categories', 'coupon', 'shops', 'tags'));
+        return view('admin.coupons.edit', compact('coupon', 'shops'));
     }
 
     public function update(UpdateCouponRequest $request, Coupon $coupon)
     {
         $coupon->update($request->all());
-        $coupon->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.coupons.index');
     }
@@ -126,7 +114,7 @@ class CouponController extends Controller
     {
         abort_if(Gate::denies('coupon_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $coupon->load('shop', 'category', 'tags', 'created_by');
+        $coupon->load('shop', 'team');
 
         return view('admin.coupons.show', compact('coupon'));
     }
