@@ -41,12 +41,6 @@ class UpdateOfferRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'tags.*' => [
-                'integer',
-            ],
-            'tags' => [
-                'array',
-            ],
         ];
     }
 }

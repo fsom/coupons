@@ -79,40 +79,6 @@
                             {{ $deal->rules }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.deal.fields.brand') }}
-                        </th>
-                        <td>
-                            {{ $deal->brand->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.deal.fields.product') }}
-                        </th>
-                        <td>
-                            {{ $deal->product->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.deal.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $deal->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.deal.fields.tags') }}
-                        </th>
-                        <td>
-                            @foreach($deal->tags as $key => $tags)
-                                <span class="label label-info">{{ $tags->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

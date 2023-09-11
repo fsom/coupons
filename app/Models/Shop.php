@@ -46,6 +46,9 @@ class Shop extends Model implements HasMedia
         'titel',
         'description',
         'content',
+        'what',
+        'save',
+        'about',
         'offerspage',
         'contactpage',
         'imprint',
@@ -53,12 +56,6 @@ class Shop extends Model implements HasMedia
         'phone',
         'icon',
         'affiliate',
-        'facebook',
-        'twitter',
-        'instagram',
-        'linkedin',
-        'youtube',
-        'tiktok',
         'active',
         'email',
         'created_at',
@@ -69,9 +66,10 @@ class Shop extends Model implements HasMedia
         'https',
         'svol',
         'keywords',
+        'catgories',
         'updated_at',
         'deleted_at',
-        'created_by_id',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -129,8 +127,8 @@ class Shop extends Model implements HasMedia
         return $file;
     }
 
-    public function created_by()
+    public function team()
     {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

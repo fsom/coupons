@@ -7,12 +7,8 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyDealRequest;
 use App\Http\Requests\StoreDealRequest;
 use App\Http\Requests\UpdateDealRequest;
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Deal;
-use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +23,7 @@ class DealController extends Controller
         abort_if(Gate::denies('deal_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Deal::with(['shop', 'brand', 'product', 'category', 'tags', 'created_by'])->select(sprintf('%s.*', (new Deal)->table));
+            $query = Deal::with(['shop', 'team'])->select(sprintf('%s.*', (new Deal)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -68,15 +64,8 @@ class DealController extends Controller
             $table->editColumn('landingpage', function ($row) {
                 return $row->landingpage ? $row->landingpage : '';
             });
-            $table->addColumn('brand_name', function ($row) {
-                return $row->brand ? $row->brand->name : '';
-            });
 
-            $table->addColumn('product_name', function ($row) {
-                return $row->product ? $row->product->name : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'shop', 'brand', 'product']);
+            $table->rawColumns(['actions', 'placeholder', 'shop']);
 
             return $table->make(true);
         }
@@ -90,21 +79,12 @@ class DealController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $tags = Tag::pluck('name', 'id');
-
-        return view('admin.deals.create', compact('brands', 'categories', 'products', 'shops', 'tags'));
+        return view('admin.deals.create', compact('shops'));
     }
 
     public function store(StoreDealRequest $request)
     {
         $deal = Deal::create($request->all());
-        $deal->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.deals.index');
     }
@@ -115,23 +95,14 @@ class DealController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $deal->load('shop', 'team');
 
-        $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $tags = Tag::pluck('name', 'id');
-
-        $deal->load('shop', 'brand', 'product', 'category', 'tags', 'created_by');
-
-        return view('admin.deals.edit', compact('brands', 'categories', 'deal', 'products', 'shops', 'tags'));
+        return view('admin.deals.edit', compact('deal', 'shops'));
     }
 
     public function update(UpdateDealRequest $request, Deal $deal)
     {
         $deal->update($request->all());
-        $deal->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.deals.index');
     }
@@ -140,7 +111,7 @@ class DealController extends Controller
     {
         abort_if(Gate::denies('deal_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $deal->load('shop', 'brand', 'product', 'category', 'tags', 'created_by');
+        $deal->load('shop', 'team');
 
         return view('admin.deals.show', compact('deal'));
     }

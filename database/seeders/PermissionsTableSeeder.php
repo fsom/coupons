@@ -120,207 +120,207 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 28,
-                'title' => 'category_create',
-            ],
-            [
-                'id'    => 29,
-                'title' => 'category_edit',
-            ],
-            [
-                'id'    => 30,
-                'title' => 'category_show',
-            ],
-            [
-                'id'    => 31,
-                'title' => 'category_delete',
-            ],
-            [
-                'id'    => 32,
-                'title' => 'category_access',
-            ],
-            [
-                'id'    => 33,
-                'title' => 'tag_create',
-            ],
-            [
-                'id'    => 34,
-                'title' => 'tag_edit',
-            ],
-            [
-                'id'    => 35,
-                'title' => 'tag_show',
-            ],
-            [
-                'id'    => 36,
-                'title' => 'tag_delete',
-            ],
-            [
-                'id'    => 37,
-                'title' => 'tag_access',
-            ],
-            [
-                'id'    => 38,
                 'title' => 'coupon_create',
             ],
             [
-                'id'    => 39,
+                'id'    => 29,
                 'title' => 'coupon_edit',
             ],
             [
-                'id'    => 40,
+                'id'    => 30,
                 'title' => 'coupon_show',
             ],
             [
-                'id'    => 41,
+                'id'    => 31,
                 'title' => 'coupon_delete',
             ],
             [
-                'id'    => 42,
+                'id'    => 32,
                 'title' => 'coupon_access',
             ],
             [
-                'id'    => 43,
+                'id'    => 33,
                 'title' => 'comment_create',
             ],
             [
-                'id'    => 44,
+                'id'    => 34,
                 'title' => 'comment_edit',
             ],
             [
-                'id'    => 45,
+                'id'    => 35,
                 'title' => 'comment_show',
             ],
             [
-                'id'    => 46,
+                'id'    => 36,
                 'title' => 'comment_delete',
             ],
             [
-                'id'    => 47,
+                'id'    => 37,
                 'title' => 'comment_access',
             ],
             [
-                'id'    => 48,
+                'id'    => 38,
                 'title' => 'deal_create',
             ],
             [
-                'id'    => 49,
+                'id'    => 39,
                 'title' => 'deal_edit',
             ],
             [
-                'id'    => 50,
+                'id'    => 40,
                 'title' => 'deal_show',
             ],
             [
-                'id'    => 51,
+                'id'    => 41,
                 'title' => 'deal_delete',
             ],
             [
-                'id'    => 52,
+                'id'    => 42,
                 'title' => 'deal_access',
             ],
             [
-                'id'    => 53,
+                'id'    => 43,
                 'title' => 'brand_create',
             ],
             [
-                'id'    => 54,
+                'id'    => 44,
                 'title' => 'brand_edit',
             ],
             [
-                'id'    => 55,
+                'id'    => 45,
                 'title' => 'brand_show',
             ],
             [
-                'id'    => 56,
+                'id'    => 46,
                 'title' => 'brand_delete',
             ],
             [
-                'id'    => 57,
+                'id'    => 47,
                 'title' => 'brand_access',
             ],
             [
-                'id'    => 58,
-                'title' => 'product_create',
-            ],
-            [
-                'id'    => 59,
-                'title' => 'product_edit',
-            ],
-            [
-                'id'    => 60,
-                'title' => 'product_show',
-            ],
-            [
-                'id'    => 61,
-                'title' => 'product_delete',
-            ],
-            [
-                'id'    => 62,
-                'title' => 'product_access',
-            ],
-            [
-                'id'    => 63,
+                'id'    => 48,
                 'title' => 'setting_access',
             ],
             [
-                'id'    => 64,
+                'id'    => 49,
                 'title' => 'offer_create',
             ],
             [
-                'id'    => 65,
+                'id'    => 50,
                 'title' => 'offer_edit',
             ],
             [
-                'id'    => 66,
+                'id'    => 51,
                 'title' => 'offer_show',
             ],
             [
-                'id'    => 67,
+                'id'    => 52,
                 'title' => 'offer_delete',
             ],
             [
-                'id'    => 68,
+                'id'    => 53,
                 'title' => 'offer_access',
             ],
             [
-                'id'    => 69,
+                'id'    => 54,
                 'title' => 'view_create',
             ],
             [
-                'id'    => 70,
+                'id'    => 55,
                 'title' => 'view_edit',
             ],
             [
-                'id'    => 71,
+                'id'    => 56,
                 'title' => 'view_show',
             ],
             [
-                'id'    => 72,
+                'id'    => 57,
                 'title' => 'view_delete',
             ],
             [
-                'id'    => 73,
+                'id'    => 58,
                 'title' => 'view_access',
             ],
             [
-                'id'    => 74,
+                'id'    => 59,
                 'title' => 'click_create',
             ],
             [
-                'id'    => 75,
+                'id'    => 60,
                 'title' => 'click_edit',
             ],
             [
-                'id'    => 76,
+                'id'    => 61,
                 'title' => 'click_show',
             ],
             [
-                'id'    => 77,
+                'id'    => 62,
                 'title' => 'click_delete',
             ],
             [
-                'id'    => 78,
+                'id'    => 63,
                 'title' => 'click_access',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'team_create',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'team_edit',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'team_show',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'team_delete',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'team_access',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'ad_create',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'ad_edit',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'ad_show',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'ad_delete',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'ad_access',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'banner_create',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'banner_edit',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'banner_show',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'banner_delete',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'banner_access',
             ],
             [
                 'id'    => 79,

@@ -16,8 +16,9 @@ class UsersTableSeeder extends Seeder
                 'email'              => 'admin@admin.com',
                 'password'           => bcrypt('password'),
                 'remember_token'     => null,
+                'approved'           => 1,
                 'verified'           => 1,
-                'verified_at'        => '2023-09-09 03:40:01',
+                'verified_at'        => '2023-09-11 05:58:25',
                 'verification_token' => '',
             ],
         ];

@@ -79,40 +79,6 @@
                             {{ $offer->rules }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.offer.fields.brand') }}
-                        </th>
-                        <td>
-                            {{ $offer->brand->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.offer.fields.product') }}
-                        </th>
-                        <td>
-                            {{ $offer->product->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.offer.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $offer->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.offer.fields.tags') }}
-                        </th>
-                        <td>
-                            @foreach($offer->tags as $key => $tags)
-                                <span class="label label-info">{{ $tags->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

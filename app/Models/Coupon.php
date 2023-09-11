@@ -30,12 +30,11 @@ class Coupon extends Model
         'until',
         'landingpage',
         'rules',
-        'category_id',
         'created_at',
         'description',
         'updated_at',
         'deleted_at',
-        'created_by_id',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -58,18 +57,8 @@ class Coupon extends Model
         $this->attributes['until'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function category()
+    public function team()
     {
-        return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
-    public function created_by()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

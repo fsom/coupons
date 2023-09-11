@@ -41,12 +41,6 @@ class StoreOfferRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'tags.*' => [
-                'integer',
-            ],
-            'tags' => [
-                'array',
-            ],
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\MultiTenantModelTrait;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Brand extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia, HasFactory;
+    use SoftDeletes, MultiTenantModelTrait, InteractsWithMedia, HasFactory;
 
     public $table = 'brands';
 
@@ -32,14 +33,15 @@ class Brand extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'region',
         'name',
         'title',
         'description',
         'content',
-        'region',
         'created_at',
         'updated_at',
         'deleted_at',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -53,21 +55,6 @@ class Brand extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function brandProducts()
-    {
-        return $this->hasMany(Product::class, 'brand_id', 'id');
-    }
-
-    public function brandDeals()
-    {
-        return $this->hasMany(Deal::class, 'brand_id', 'id');
-    }
-
-    public function brandOffers()
-    {
-        return $this->hasMany(Offer::class, 'brand_id', 'id');
-    }
-
     public function getImageAttribute()
     {
         $file = $this->getMedia('image')->last();
@@ -78,5 +65,10 @@ class Brand extends Model implements HasMedia
         }
 
         return $file;
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

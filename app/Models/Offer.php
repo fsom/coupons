@@ -30,13 +30,10 @@ class Offer extends Model
         'until',
         'landingpage',
         'rules',
-        'brand_id',
-        'product_id',
-        'category_id',
         'created_at',
         'updated_at',
         'deleted_at',
-        'created_by_id',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -59,28 +56,8 @@ class Offer extends Model
         $this->attributes['until'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function brand()
+    public function team()
     {
-        return $this->belongsTo(Brand::class, 'brand_id');
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
-    public function created_by()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

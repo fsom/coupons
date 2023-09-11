@@ -41,12 +41,6 @@ class UpdateCouponRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'tags.*' => [
-                'integer',
-            ],
-            'tags' => [
-                'array',
-            ],
             'description' => [
                 'string',
                 'required',

@@ -7,12 +7,8 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyOfferRequest;
 use App\Http\Requests\StoreOfferRequest;
 use App\Http\Requests\UpdateOfferRequest;
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Offer;
-use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +23,7 @@ class OfferController extends Controller
         abort_if(Gate::denies('offer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Offer::with(['shop', 'brand', 'product', 'category', 'tags', 'created_by'])->select(sprintf('%s.*', (new Offer)->table));
+            $query = Offer::with(['shop', 'team'])->select(sprintf('%s.*', (new Offer)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -68,15 +64,8 @@ class OfferController extends Controller
             $table->editColumn('landingpage', function ($row) {
                 return $row->landingpage ? $row->landingpage : '';
             });
-            $table->addColumn('brand_name', function ($row) {
-                return $row->brand ? $row->brand->name : '';
-            });
 
-            $table->addColumn('product_name', function ($row) {
-                return $row->product ? $row->product->name : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'shop', 'brand', 'product']);
+            $table->rawColumns(['actions', 'placeholder', 'shop']);
 
             return $table->make(true);
         }
@@ -90,21 +79,12 @@ class OfferController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $tags = Tag::pluck('name', 'id');
-
-        return view('admin.offers.create', compact('brands', 'categories', 'products', 'shops', 'tags'));
+        return view('admin.offers.create', compact('shops'));
     }
 
     public function store(StoreOfferRequest $request)
     {
         $offer = Offer::create($request->all());
-        $offer->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.offers.index');
     }
@@ -115,23 +95,14 @@ class OfferController extends Controller
 
         $shops = Shop::pluck('url', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $offer->load('shop', 'team');
 
-        $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $tags = Tag::pluck('name', 'id');
-
-        $offer->load('shop', 'brand', 'product', 'category', 'tags', 'created_by');
-
-        return view('admin.offers.edit', compact('brands', 'categories', 'offer', 'products', 'shops', 'tags'));
+        return view('admin.offers.edit', compact('offer', 'shops'));
     }
 
     public function update(UpdateOfferRequest $request, Offer $offer)
     {
         $offer->update($request->all());
-        $offer->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.offers.index');
     }
@@ -140,7 +111,7 @@ class OfferController extends Controller
     {
         abort_if(Gate::denies('offer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $offer->load('shop', 'brand', 'product', 'category', 'tags', 'created_by');
+        $offer->load('shop', 'team');
 
         return view('admin.offers.show', compact('offer'));
     }

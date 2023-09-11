@@ -23,14 +23,6 @@
                 <span class="help-block">{{ trans('cruds.shop.fields.region_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="name">{{ trans('cruds.shop.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
-                @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="domain">{{ trans('cruds.shop.fields.domain') }}</label>
                 <input class="form-control {{ $errors->has('domain') ? 'is-invalid' : '' }}" type="text" name="domain" id="domain" value="{{ old('domain', '') }}">
                 @if($errors->has('domain'))
@@ -45,6 +37,14 @@
                     <span class="text-danger">{{ $errors->first('url') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.url_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="name">{{ trans('cruds.shop.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
+                @if($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="titel">{{ trans('cruds.shop.fields.titel') }}</label>
@@ -69,6 +69,30 @@
                     <span class="text-danger">{{ $errors->first('content') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.content_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="what">{{ trans('cruds.shop.fields.what') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('what') ? 'is-invalid' : '' }}" name="what" id="what">{!! old('what') !!}</textarea>
+                @if($errors->has('what'))
+                    <span class="text-danger">{{ $errors->first('what') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.what_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="save">{{ trans('cruds.shop.fields.save') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('save') ? 'is-invalid' : '' }}" name="save" id="save">{!! old('save') !!}</textarea>
+                @if($errors->has('save'))
+                    <span class="text-danger">{{ $errors->first('save') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.save_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="about">{{ trans('cruds.shop.fields.about') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('about') ? 'is-invalid' : '' }}" name="about" id="about">{!! old('about') !!}</textarea>
+                @if($errors->has('about'))
+                    <span class="text-danger">{{ $errors->first('about') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.about_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="offerspage">{{ trans('cruds.shop.fields.offerspage') }}</label>
@@ -143,54 +167,6 @@
                     <span class="text-danger">{{ $errors->first('affiliate') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.affiliate_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="facebook">{{ trans('cruds.shop.fields.facebook') }}</label>
-                <input class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" type="text" name="facebook" id="facebook" value="{{ old('facebook', '') }}">
-                @if($errors->has('facebook'))
-                    <span class="text-danger">{{ $errors->first('facebook') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.facebook_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="twitter">{{ trans('cruds.shop.fields.twitter') }}</label>
-                <input class="form-control {{ $errors->has('twitter') ? 'is-invalid' : '' }}" type="text" name="twitter" id="twitter" value="{{ old('twitter', '') }}">
-                @if($errors->has('twitter'))
-                    <span class="text-danger">{{ $errors->first('twitter') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.twitter_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="instagram">{{ trans('cruds.shop.fields.instagram') }}</label>
-                <input class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" type="text" name="instagram" id="instagram" value="{{ old('instagram', '') }}">
-                @if($errors->has('instagram'))
-                    <span class="text-danger">{{ $errors->first('instagram') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.instagram_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="linkedin">{{ trans('cruds.shop.fields.linkedin') }}</label>
-                <input class="form-control {{ $errors->has('linkedin') ? 'is-invalid' : '' }}" type="text" name="linkedin" id="linkedin" value="{{ old('linkedin', '') }}">
-                @if($errors->has('linkedin'))
-                    <span class="text-danger">{{ $errors->first('linkedin') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.linkedin_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="youtube">{{ trans('cruds.shop.fields.youtube') }}</label>
-                <input class="form-control {{ $errors->has('youtube') ? 'is-invalid' : '' }}" type="text" name="youtube" id="youtube" value="{{ old('youtube', '') }}">
-                @if($errors->has('youtube'))
-                    <span class="text-danger">{{ $errors->first('youtube') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.youtube_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="tiktok">{{ trans('cruds.shop.fields.tiktok') }}</label>
-                <input class="form-control {{ $errors->has('tiktok') ? 'is-invalid' : '' }}" type="text" name="tiktok" id="tiktok" value="{{ old('tiktok', '') }}">
-                @if($errors->has('tiktok'))
-                    <span class="text-danger">{{ $errors->first('tiktok') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.tiktok_helper') }}</span>
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('active') ? 'is-invalid' : '' }}">
@@ -269,6 +245,14 @@
                     <span class="text-danger">{{ $errors->first('keywords') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.keywords_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="catgories">{{ trans('cruds.shop.fields.catgories') }}</label>
+                <textarea class="form-control {{ $errors->has('catgories') ? 'is-invalid' : '' }}" name="catgories" id="catgories">{{ old('catgories') }}</textarea>
+                @if($errors->has('catgories'))
+                    <span class="text-danger">{{ $errors->first('catgories') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.catgories_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

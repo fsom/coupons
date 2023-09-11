@@ -19,7 +19,7 @@ class ViewController extends Controller
         abort_if(Gate::denies('view_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = View::query()->select(sprintf('%s.*', (new View)->table));
+            $query = View::with(['team'])->select(sprintf('%s.*', (new View)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -85,6 +85,8 @@ class ViewController extends Controller
     {
         abort_if(Gate::denies('view_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $view->load('team');
+
         return view('admin.views.edit', compact('view'));
     }
 
@@ -98,6 +100,8 @@ class ViewController extends Controller
     public function show(View $view)
     {
         abort_if(Gate::denies('view_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $view->load('team');
 
         return view('admin.views.show', compact('view'));
     }
