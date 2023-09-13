@@ -94,6 +94,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('banners/destroy', 'BannerController@massDestroy')->name('banners.massDestroy');
     Route::resource('banners', 'BannerController');
 
+    // Page
+    Route::delete('pages/destroy', 'PageController@massDestroy')->name('pages.massDestroy');
+    Route::post('pages/media', 'PageController@storeMedia')->name('pages.storeMedia');
+    Route::post('pages/ckmedia', 'PageController@storeCKEditorImages')->name('pages.storeCKEditorImages');
+    Route::resource('pages', 'PageController');
+
+    // Post
+    Route::delete('posts/destroy', 'PostController@massDestroy')->name('posts.massDestroy');
+    Route::post('posts/media', 'PostController@storeMedia')->name('posts.storeMedia');
+    Route::post('posts/ckmedia', 'PostController@storeCKEditorImages')->name('posts.storeCKEditorImages');
+    Route::resource('posts', 'PostController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');
