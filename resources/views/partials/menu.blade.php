@@ -44,18 +44,6 @@
                         </a>
                     </li>
                 @endcan
-                @can('ad_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.ads.index") }}" class="nav-link {{ request()->is("admin/ads") || request()->is("admin/ads/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fab fa-adversal">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.ad.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
                 @can('coupon_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.coupons.index") }}" class="nav-link {{ request()->is("admin/coupons") || request()->is("admin/coupons/*") ? "active" : "" }}">
@@ -88,6 +76,42 @@
                             </i>
                             <p>
                                 {{ trans('cruds.offer.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('page_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pages.index") }}" class="nav-link {{ request()->is("admin/pages") || request()->is("admin/pages/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon far fa-object-group">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.page.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('post_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.posts.index") }}" class="nav-link {{ request()->is("admin/posts") || request()->is("admin/posts/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon far fa-newspaper">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.post.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('ad_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.ads.index") }}" class="nav-link {{ request()->is("admin/ads") || request()->is("admin/ads/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fab fa-adversal">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.ad.title') }}
                             </p>
                         </a>
                     </li>
