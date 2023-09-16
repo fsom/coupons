@@ -1,47 +1,38 @@
 @extends('layouts.admin')
 @section('content')
-@can('shop_create')
+@can('option_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.shops.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.shop.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.options.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.option.title_singular') }}
             </a>
             <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
-            @include('csvImport.modal', ['model' => 'Shop', 'route' => 'admin.shops.parseCsvImport'])
+            @include('csvImport.modal', ['model' => 'Option', 'route' => 'admin.options.parseCsvImport'])
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.shop.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.option.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Shop">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Option">
             <thead>
                 <tr>
                     <th width="10">
 
                     </th>
                     <th>
-                        {{ trans('cruds.shop.fields.id') }}
+                        {{ trans('cruds.option.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.shop.fields.alias') }}
+                        {{ trans('cruds.option.fields.key') }}
                     </th>
                     <th>
-                        {{ trans('cruds.shop.fields.region') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.shop.fields.domain') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.shop.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.shop.fields.active') }}
+                        {{ trans('cruds.option.fields.value') }}
                     </th>
                     <th>
                         &nbsp;
@@ -60,11 +51,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('shop_delete')
+@can('option_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.shops.massDestroy') }}",
+    url: "{{ route('admin.options.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -96,22 +87,19 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.shops.index') }}",
+    ajax: "{{ route('admin.options.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'alias', name: 'alias' },
-{ data: 'region', name: 'region' },
-{ data: 'domain', name: 'domain' },
-{ data: 'name', name: 'name' },
-{ data: 'active', name: 'active' },
+{ data: 'key', name: 'key' },
+{ data: 'value', name: 'value' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   };
-  let table = $('.datatable-Shop').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-Option').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

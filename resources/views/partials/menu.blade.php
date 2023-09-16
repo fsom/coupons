@@ -117,8 +117,8 @@
                     </li>
                 @endcan
                 @can('setting_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/brands*") ? "menu-open" : "" }} {{ request()->is("admin/views*") ? "menu-open" : "" }} {{ request()->is("admin/clicks*") ? "menu-open" : "" }} {{ request()->is("admin/banners*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/brands*") ? "active" : "" }} {{ request()->is("admin/views*") ? "active" : "" }} {{ request()->is("admin/clicks*") ? "active" : "" }} {{ request()->is("admin/banners*") ? "active" : "" }}" href="#">
+                    <li class="nav-item has-treeview {{ request()->is("admin/brands*") ? "menu-open" : "" }} {{ request()->is("admin/views*") ? "menu-open" : "" }} {{ request()->is("admin/clicks*") ? "menu-open" : "" }} {{ request()->is("admin/banners*") ? "menu-open" : "" }} {{ request()->is("admin/options*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/brands*") ? "active" : "" }} {{ request()->is("admin/views*") ? "active" : "" }} {{ request()->is("admin/clicks*") ? "active" : "" }} {{ request()->is("admin/banners*") ? "active" : "" }} {{ request()->is("admin/options*") ? "active" : "" }}" href="#">
                             <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
@@ -172,6 +172,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.banner.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('option_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.options.index") }}" class="nav-link {{ request()->is("admin/options") || request()->is("admin/options/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cog">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.option.title') }}
                                         </p>
                                     </a>
                                 </li>

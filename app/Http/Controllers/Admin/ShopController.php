@@ -48,14 +48,17 @@ class ShopController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('alias', function ($row) {
+                return $row->alias ? $row->alias : '';
+            });
             $table->editColumn('region', function ($row) {
                 return $row->region ? Shop::REGION_SELECT[$row->region] : '';
             });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : '';
-            });
             $table->editColumn('domain', function ($row) {
                 return $row->domain ? $row->domain : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
             });
             $table->editColumn('active', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->active ? 'checked' : null) . '>';

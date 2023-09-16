@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.shop.fields.alias') }}
+                        </th>
+                        <td>
+                            {{ $shop->alias }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.shop.fields.region') }}
                         </th>
                         <td>
@@ -57,26 +65,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.shop.fields.titel') }}
-                        </th>
-                        <td>
-                            {{ $shop->titel }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.shop.fields.description') }}
-                        </th>
-                        <td>
-                            {{ $shop->description }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.shop.fields.content') }}
                         </th>
                         <td>
                             {!! $shop->content !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.meta_title') }}
+                        </th>
+                        <td>
+                            {{ $shop->meta_title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.shop.fields.meta_description') }}
+                        </th>
+                        <td>
+                            {{ $shop->meta_description }}
                         </td>
                     </tr>
                     <tr>

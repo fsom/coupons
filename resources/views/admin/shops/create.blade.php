@@ -10,6 +10,14 @@
         <form method="POST" action="{{ route("admin.shops.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label class="required" for="alias">{{ trans('cruds.shop.fields.alias') }}</label>
+                <input class="form-control {{ $errors->has('alias') ? 'is-invalid' : '' }}" type="text" name="alias" id="alias" value="{{ old('alias', '') }}" required>
+                @if($errors->has('alias'))
+                    <span class="text-danger">{{ $errors->first('alias') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.alias_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required">{{ trans('cruds.shop.fields.region') }}</label>
                 <select class="form-control {{ $errors->has('region') ? 'is-invalid' : '' }}" name="region" id="region" required>
                     <option value disabled {{ old('region', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
@@ -47,28 +55,28 @@
                 <span class="help-block">{{ trans('cruds.shop.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="titel">{{ trans('cruds.shop.fields.titel') }}</label>
-                <input class="form-control {{ $errors->has('titel') ? 'is-invalid' : '' }}" type="text" name="titel" id="titel" value="{{ old('titel', '') }}">
-                @if($errors->has('titel'))
-                    <span class="text-danger">{{ $errors->first('titel') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.titel_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.shop.fields.description') }}</label>
-                <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', '') }}">
-                @if($errors->has('description'))
-                    <span class="text-danger">{{ $errors->first('description') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.shop.fields.description_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="content">{{ trans('cruds.shop.fields.content') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content" id="content">{!! old('content') !!}</textarea>
                 @if($errors->has('content'))
                     <span class="text-danger">{{ $errors->first('content') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.shop.fields.content_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="meta_title">{{ trans('cruds.shop.fields.meta_title') }}</label>
+                <input class="form-control {{ $errors->has('meta_title') ? 'is-invalid' : '' }}" type="text" name="meta_title" id="meta_title" value="{{ old('meta_title', '') }}">
+                @if($errors->has('meta_title'))
+                    <span class="text-danger">{{ $errors->first('meta_title') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.meta_title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="meta_description">{{ trans('cruds.shop.fields.meta_description') }}</label>
+                <input class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}" type="text" name="meta_description" id="meta_description" value="{{ old('meta_description', '') }}">
+                @if($errors->has('meta_description'))
+                    <span class="text-danger">{{ $errors->first('meta_description') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.shop.fields.meta_description_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="what">{{ trans('cruds.shop.fields.what') }}</label>
