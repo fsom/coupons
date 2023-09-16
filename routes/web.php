@@ -106,6 +106,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('posts/ckmedia', 'PostController@storeCKEditorImages')->name('posts.storeCKEditorImages');
     Route::resource('posts', 'PostController');
 
+    // Option
+    Route::delete('options/destroy', 'OptionController@massDestroy')->name('options.massDestroy');
+    Route::post('options/parse-csv-import', 'OptionController@parseCsvImport')->name('options.parseCsvImport');
+    Route::post('options/process-csv-import', 'OptionController@processCsvImport')->name('options.processCsvImport');
+    Route::resource('options', 'OptionController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

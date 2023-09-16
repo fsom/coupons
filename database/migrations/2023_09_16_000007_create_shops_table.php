@@ -10,13 +10,14 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('alias')->unique();
             $table->string('region');
             $table->string('domain')->nullable();
             $table->string('url');
             $table->string('name')->nullable();
-            $table->string('titel')->nullable();
-            $table->string('description')->nullable();
             $table->longText('content')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
             $table->longText('what')->nullable();
             $table->longText('save')->nullable();
             $table->longText('about')->nullable();

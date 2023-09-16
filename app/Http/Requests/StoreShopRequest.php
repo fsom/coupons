@@ -17,12 +17,13 @@ class StoreShopRequest extends FormRequest
     public function rules()
     {
         return [
+            'alias' => [
+                'string',
+                'required',
+                'unique:shops',
+            ],
             'region' => [
                 'required',
-            ],
-            'name' => [
-                'string',
-                'nullable',
             ],
             'domain' => [
                 'string',
@@ -32,11 +33,15 @@ class StoreShopRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'titel' => [
+            'name' => [
                 'string',
                 'nullable',
             ],
-            'description' => [
+            'meta_title' => [
+                'string',
+                'nullable',
+            ],
+            'meta_description' => [
                 'string',
                 'nullable',
             ],

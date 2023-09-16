@@ -17,12 +17,13 @@ class UpdateShopRequest extends FormRequest
     public function rules()
     {
         return [
+            'alias' => [
+                'string',
+                'required',
+                'unique:shops,alias,' . request()->route('shop')->id,
+            ],
             'region' => [
                 'required',
-            ],
-            'name' => [
-                'string',
-                'nullable',
             ],
             'domain' => [
                 'string',
@@ -32,11 +33,15 @@ class UpdateShopRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'titel' => [
+            'name' => [
                 'string',
                 'nullable',
             ],
-            'description' => [
+            'meta_title' => [
+                'string',
+                'nullable',
+            ],
+            'meta_description' => [
                 'string',
                 'nullable',
             ],

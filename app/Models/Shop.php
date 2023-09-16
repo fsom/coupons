@@ -39,13 +39,14 @@ class Shop extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'alias',
         'region',
-        'name',
         'domain',
         'url',
-        'titel',
-        'description',
+        'name',
         'content',
+        'meta_title',
+        'meta_description',
         'what',
         'save',
         'about',
